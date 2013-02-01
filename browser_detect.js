@@ -54,45 +54,45 @@ var BrowserDetect = {
         htmlDocument.setAttribute('class', finalClasses);
     }
     
-    // if Internet Explorer, which one?
     var classesToAdd = ["Unknown", "Unknown-version"];
-      // if Internet Explorer, which one?
-      if (strName.match("Microsoft")) {
-        classesToAdd = ["IE", "IE-" + findVersion("MSIE ", 5, 2, ".", "")];
+    
+    // if Internet Explorer, which one?
+    if (strName.match("Microsoft")) {
+      classesToAdd = ["IE", "IE-" + findVersion("MSIE ", 5, 2, ".", "")];
+    }
+    //Browsers like Safari, Firefox and Chrome
+    else if(strName.match("Netscape")) {
+      // if Firefox
+      if (strHeader.match("Firefox")) {
+        classesToAdd = ["Firefox", "Firefox-" + findVersion("/", 1, 2, ".", "")];
       }
-      //Browsers like Safari, Firefox and Chrome
-      else if(strName.match("Netscape")) {
-        // if Firefox
-        if (strHeader.match("Firefox")) {
-          classesToAdd = ["Firefox", "Firefox-" + findVersion("/", 1, 2, ".", "")];
-        }
-        // if Android, which one?
-        else if (strHeader.match("Android")) {
-          classesToAdd = ["Android", "BrowserAndroid-" + findVersion("Android ", 8, 3, ".", "")];
-        }
-        // if Chrome, which one?
-        else if (strHeader.match("Chrome")) {
-          classesToAdd = ["Chrome", "Chrome-" + findVersion("Chrome/", 7, 2, ".", "")];
-        }
-        // if Safari iPhone, which one?
-        else if (strHeader.match("iPhone")) {
-          classesToAdd = ["iPhone", "iPhone-safari-" + findVersion("Safari/", 7, 1, ".", "")];
-        }
-        // if Safari iPad, which one?
-        else if (strHeader.match("iPad")) {
-          classesToAdd = ["iPad", "iPad-safari-" + findVersion("Safari/", 7, 1, ".", "")];
-        }
-        // if Safari, which one?
-        else if (strHeader.match("Safari")) {
-          classesToAdd = ["Safari", "Safari-" + findVersion("Safari/", 7, 1, ".", "")];
-        }
+      // if Android, which one?
+      else if (strHeader.match("Android")) {
+        classesToAdd = ["Android", "BrowserAndroid-" + findVersion("Android ", 8, 3, ".", "")];
       }
-      // if Opera, which one?
-      else if (strHeader.match("Opera")) {
-        classesToAdd = ["Opera", "Opera-" + findVersion("Version/", 8, 2, ".", "")];
+      // if Chrome, which one?
+      else if (strHeader.match("Chrome")) {
+        classesToAdd = ["Chrome", "Chrome-" + findVersion("Chrome/", 7, 2, ".", "")];
       }
+      // if Safari iPhone, which one?
+      else if (strHeader.match("iPhone")) {
+        classesToAdd = ["iPhone", "iPhone-safari-" + findVersion("Safari/", 7, 1, ".", "")];
+      }
+      // if Safari iPad, which one?
+      else if (strHeader.match("iPad")) {
+        classesToAdd = ["iPad", "iPad-safari-" + findVersion("Safari/", 7, 1, ".", "")];
+      }
+      // if Safari, which one?
+      else if (strHeader.match("Safari")) {
+        classesToAdd = ["Safari", "Safari-" + findVersion("Safari/", 7, 1, ".", "")];
+      }
+    }
+    // if Opera, which one?
+    else if (strHeader.match("Opera")) {
+      classesToAdd = ["Opera", "Opera-" + findVersion("Version/", 8, 2, ".", "")];
+    }
 
-      addClassHtml(classesToAdd);
+    addClassHtml(classesToAdd);
   }
 };
 BrowserDetect.load();
